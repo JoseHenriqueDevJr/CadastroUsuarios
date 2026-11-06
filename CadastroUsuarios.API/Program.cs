@@ -6,14 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. Configurar o CORS para permitir o Front-end na porta 5174
 builder.Services.AddCors(options => {
     options.AddPolicy("PermitirReact", policy => {
-        policy.WithOrigins(
-                "http://localhost:5173",
-                "https://localhost:5173",
-                "http://localhost:5174",
-                "https://localhost:5174",
-                "https://korenet.com.br", // <-- ADICIONE ESSE (Com www)
-                "https://korenet.com.br"       // <-- ADICIONE ESSE (Sem www)
-              )
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
