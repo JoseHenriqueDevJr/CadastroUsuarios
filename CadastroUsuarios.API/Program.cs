@@ -12,7 +12,10 @@ builder.Services.AddCors(options => {
     });
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
 
 // 2. Configuração do PostgreSQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
